@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>آموزشگاه رزونانس</title>
+
+  <!-- فونت فارسی -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- آیکن‌ها -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- پس‌زمینه دکوراتیو -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="noise-layer"></div>
+
+  <!-- هدر -->
+  <header class="site-header glass">
+    <div class="header-right">
+      <h1 class="brand">
+        <i class="fa-solid fa-wave-square"></i>
+        آموزشگاه رزونانس
+      </h1>
+    </div>
+
+    <div class="header-left">
+      <button class="google-btn register-btn" id="openRegisterModal">
+        <i class="fa-brands fa-google"></i>
+        <span>Register with Google</span>
+      </button>
+
+      <button class="google-btn login-btn" id="openLoginModal">
+        <i class="fa-brands fa-google"></i>
+        <span>Login with Google</span>
+      </button>
+
+      <button class="cart-toggle-btn" id="cartToggleBtn">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>سبد خرید</span>
+        <b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <!-- نوار وضعیت کاربر -->
+  <section class="user-status-wrap">
+    <div class="container">
+      <div class="user-status glass fade-in">
+        <div class="user-status-info">
+          <i class="fa-solid fa-user-shield"></i>
+          <span id="userStatusText">در حال حاضر وارد حسابی نشده‌اید.</span>
+        </div>
+
+        <div class="user-status-actions">
+          <button class="secondary-btn" id="logoutBtn">خروج</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- هیرو -->
+  <main>
+    <section class="hero container">
+      <div class="hero-content fade-in-up">
+        <span class="hero-badge">آموزش موسیقی • حرفه‌ای • مدرن</span>
+        <h2>به آموزشگاه رزونانس خوش آمدید</h2>
+        <p>
+          جایی که صدا فقط شنیده نمی‌شود، بلکه شکل می‌گیرد. از گیتار و پیانو تا ویولن و سینث سایزر،
+          کلاس‌های ما برای هنرجویان مبتدی تا پیشرفته طراحی شده‌اند.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#classes" class="primary-btn">مشاهده کلاس‌ها</a>
+          <button class="secondary-btn" id="heroCartBtn">رفتن به سبد خرید</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>6</strong>
+            <span>کلاس تخصصی</span>
+          </div>
+          <div class="stat-card">
+            <strong>RTL</strong>
+            <span>طراحی فارسی</span>
+          </div>
+          <div class="stat-card">
+            <strong>100%</strong>
+            <span>ریسپانسیو</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- پیام دسترسی -->
+    <section class="container">
+      <div class="notice-box glass fade-in" id="accessNotice">
+        فقط حساب لاگین شده امکان خرید کلاس‌ها را دارد.
+      </div>
+    </section>
+
+    <!-- کلاس‌ها -->
+    <section class="classes-section container" id="classes">
+      <div class="section-heading fade-in-up">
+        <span>دوره‌های آموزشی</span>
+        <h3>کلاس‌های آموزشگاه رزونانس</h3>
+        <p>کلاس مناسب خودت را انتخاب کن و با چند کلیک به سبد خرید اضافه کن.</p>
+      </div>
+
+      <div class="classes-grid" id="classesGrid">
+        <!-- کارت‌ها با جاوااسکریپت ساخته می‌شوند -->
+      </div>
+    </section>
+
+    <!-- پنل ادمین/OWNER -->
+    <section class="owner-panel-section container" id="ownerPanelSection">
+      <div class="section-heading fade-in-up">
+        <span>مدیریت ویژه</span>
+        <h3>پنل OWNER</h3>
+        <p>نمایش کاربران، سبد خرید آن‌ها، خروج اجباری و بن‌کردن کاربران.</p>
+      </div>
+
+      <div class="owner-panel glass fade-in" id="ownerPanel">
+        <div class="owner-panel-header">
+          <div>
+            <h4>کاربران ثبت‌شده</h4>
+            <p>این بخش فقط برای مالک سایت قابل مشاهده است.</p>
+          </div>
+          <button class="secondary-btn" id="refreshUsersBtn">
+            <i class="fa-solid fa-rotate"></i>
+            بروزرسانی
+          </button>
+        </div>
+
+        <div class="owner-users-list" id="ownerUsersList">
+          <!-- کاربران با JS ساخته می‌شوند -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- سایدبار سبد خرید -->
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-panel glass">
+      <div class="cart-header">
+        <h3>
+          <i class="fa-solid fa-bag-shopping"></i>
+          سبد خرید
+        </h3>
+        <button class="icon-btn" id="closeCartBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="cart-body" id="cartItemsContainer">
+        <div class="empty-cart">
+          <i class="fa-solid fa-cart-flatbed-suitcase"></i>
+          <p>سبد خرید شما هنوز خالی است.</p>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>مجموع کل:</span>
+          <strong id="cartTotal">0 تومان</strong>
+        </div>
+        <button class="primary-btn full-width" id="checkoutBtn">پرداخت</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- مودال ورود -->
+  <div class="modal" id="loginModal">
+    <div class="modal-backdrop close-modal"></div>
+    <div class="modal-content glass">
+      <button class="modal-close close-modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-header">
+        <h3>ورود به حساب کاربری</h3>
+        <p>برای نسخه نمایشی، فقط ایمیل وارد می‌شود.</p>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <label for="loginEmail">ایمیل</label>
+        <input type="email" id="loginEmail" placeholder="example@gmail.com" required />
+
+        <button type="submit" class="google-btn auth-submit-btn">
+          <i class="fa-brands fa-google"></i>
+          <span>Login with Google</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- مودال ثبت‌نام -->
+  <div class="modal" id="registerModal">
+    <div class="modal-backdrop close-modal"></div>
+    <div class="modal-content glass">
+      <button class="modal-close close-modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-header">
+        <h3>ثبت‌نام در سایت</h3>
+        <p>برای نسخه نمایشی، ثبت‌نام با ایمیل شبیه‌سازی شده است.</p>
+      </div>
+
+      <form id="registerForm" class="auth-form">
+        <label for="registerEmail">ایمیل</label>
+        <input type="email" id="registerEmail" placeholder="example@gmail.com" required />
+
+        <button type="submit" class="google-btn auth-submit-btn">
+          <i class="fa-brands fa-google"></i>
+          <span>Register with Google</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- مودال پرداخت -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-backdrop close-modal"></div>
+    <div class="modal-content glass payment-modal-content">
+      <button class="modal-close close-modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-header">
+        <h3>راهنمای پرداخت</h3>
+        <p>پرداخت آنلاین واقعی فعال نیست.</p>
+      </div>
+
+      <div class="payment-box">
+        <i class="fa-solid fa-credit-card"></i>
+        <p>لطفاً مبلغ را به شماره کارت زیر واریز کنید</p>
+        <div class="card-number" id="fakeCardNumber">0000-0000-0000-0000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- فوتر -->
+  <footer class="site-footer glass">
+    <p>تمامی حقوق این سایت متعلق به آموزشگاه رزونانس است</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
